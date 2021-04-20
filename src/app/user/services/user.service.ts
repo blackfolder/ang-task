@@ -15,6 +15,10 @@ export class UserService {
   ) {
   }
 
+  loadUsers(): void {
+    this.store.dispatch(loadUsers());
+  }
+
   getUsers(): Observable<User[]> {
     return this.store.select(selectUsers);
   }
