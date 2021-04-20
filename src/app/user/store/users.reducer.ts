@@ -21,7 +21,7 @@ export const initialState: State = {
 
     }
   },
-  currentUserId: 1
+  currentUserId: 2,
 };
 
 

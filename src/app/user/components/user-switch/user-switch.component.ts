@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import {User} from '../../models/user.model';
-import {UserService} from '../../services/user.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-switch',
@@ -11,6 +11,7 @@ import {UserService} from '../../services/user.service';
 })
 export class UserSwitchComponent implements OnInit {
   users$: Observable<User[]> = this.userService.getUsers();
+  currentUser$: Observable<User> = this.userService.getCurrentUser();
 
   constructor(private userService: UserService) { }
 
