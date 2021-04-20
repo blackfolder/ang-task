@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { UserModule } from './user/user.module';
 import { EffectsModule } from '@ngrx/effects';
-import { reducer } from './user/store/users.reducer';
+import { usersFeatureKey, usersReducer } from './user/store/users.reducer';
 import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ListModule } from './list/list.module';
+import { listFeatureKey, listReducer } from './list/store/list.reducer';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     UserModule,
+    ListModule,
     FormsModule,
-    StoreModule.forRoot({ users: reducer }, {}),
+    StoreModule.forRoot({ [usersFeatureKey]: usersReducer, [listFeatureKey]: listReducer }, {}),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([]),
   ],

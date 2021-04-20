@@ -25,7 +25,7 @@ export const initialState: State = {
 };
 
 
-export const reducer = createReducer(
+export const usersReducer = createReducer(
   initialState,
 
   on(UsersActions.loadUserSuccess, (state, { users }) => ({
