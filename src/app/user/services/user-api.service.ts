@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { map} from 'rxjs/operators';
-import { IJsonUsersConfig } from '../models/json-users-config.model';
+import { JsonUsersConfig } from '../models/json-users-config.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class UserApiService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.httpService.get<IJsonUsersConfig>(this.userJsonFileUrl).pipe(
+    return this.httpService.get<JsonUsersConfig>(this.userJsonFileUrl).pipe(
       map(({ userList }) => userList),
     );
   }
