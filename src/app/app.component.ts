@@ -1,17 +1,13 @@
-import { Component } from '@angular/core';
-import {UserService} from './user/services/user.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { UserService } from './user/services/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  list: any[] = [
-    'listItem1',
-    'listItem2',
-    'listItem3',
-  ];
 
   constructor(public userService: UserService) {
   }
