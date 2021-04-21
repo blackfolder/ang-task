@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromList from './list.reducer';
-import { orderBy } from 'lodash';
+import { orderBy } from 'lodash-es';
 
 export const selectListState = createFeatureSelector<fromList.State>(
   fromList.listFeatureKey
