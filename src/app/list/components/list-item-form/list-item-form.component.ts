@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ListItemService } from '../services/list-item.service';
+import { ListItemService } from '../../services/list-item.service';
 
 @Component({
   selector: 'app-list-item-form',
