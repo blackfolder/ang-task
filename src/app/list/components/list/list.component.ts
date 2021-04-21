@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ColumnSortedData } from '../../../shared/sort/model/column-sorted-data.model';
+import { SortService } from '../../../shared/sort/sort.service';
 import { ListItem } from '../../models/list-item.model';
 import { ListService } from '../../services/list.service';
 
@@ -7,6 +9,7 @@ import { ListService } from '../../services/list.service';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  providers: [SortService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent {
@@ -14,7 +17,12 @@ export class ListComponent {
     this.listService.loadUserItems(userId);
   };
 
-  userItems$: Observable<ListItem[]> = this.listService.getUserItems();
+  readonly userItems$: Observable<ListItem[]> = this.listService.getSortedUserItems();
+  readonly tableHeaders = ['id', 'title', 'content'];
 
   constructor(private readonly listService: ListService) { }
+
+  onColumnSorted(columnSortedData: ColumnSortedData): void {
+    this.listService.sortUserItems(columnSortedData.direction, columnSortedData.columnName);
+  }
 }

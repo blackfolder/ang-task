@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromList from './list.reducer';
+import { orderBy } from 'lodash';
 
 export const selectListState = createFeatureSelector<fromList.State>(
   fromList.listFeatureKey
@@ -7,5 +8,11 @@ export const selectListState = createFeatureSelector<fromList.State>(
 
 export const selectUserItems = createSelector(
   selectListState,
-  state => Object.values(state.userItems),
+  state => state.userItems,
+);
+
+export const selectSortedUserItems = createSelector(
+  selectListState,
+  // lodash used for simplicity
+  state => orderBy(state.userItems, state.sortField, state.sortDirection),
 );

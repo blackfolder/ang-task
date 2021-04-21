@@ -1,0 +1,19 @@
+<h3>User items:</h3>
+
+<table class="table table-bordered" sort (columnSorted)="onColumnSorted($event)">
+  <thead class="thead-light">
+    <th [sort-header]="header" sort-direction="asc" *ngFor="let header of tableHeaders">
+      {{header}}
+    </th>
+  </thead>
+
+  <tbody>
+    <ng-container *ngIf="userItems$ | async as items">
+      <tr *ngFor="let item of items">
+        <td *ngFor="let column of tableHeaders">
+          {{item[column]}}
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

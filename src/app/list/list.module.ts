@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from './components/list/list.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ListEffects } from './store/list.effects';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListEffects } from './store/list.effects';
     CommonModule,
     HttpClientModule,
     EffectsModule.forFeature([ListEffects]),
-    FormsModule
+    FormsModule,
+    SharedModule,
   ]
 })
 export class ListModule { }
