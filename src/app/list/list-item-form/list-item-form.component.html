@@ -1,0 +1,15 @@
+<h4>Add new user item:</h4>
+
+<form [formGroup]="listItemForm" (ngSubmit)="onSubmit()">
+  <label>
+    Title:
+    <input type="text" formControlName="title">
+  </label>
+
+  <label>
+    Content:
+    <input type="text" formControlName="content">
+  </label>
+
+  <button type="submit" [disabled]="!listItemForm.valid">Save</button>
+</form>

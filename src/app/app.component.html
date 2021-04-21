@@ -3,6 +3,7 @@
   <ng-container *ngIf="userService.getCurrentUser() | async as currentUser; else noUserLoggedIn">
     <h2>Logged in as {{currentUser.name}}</h2>
     <app-list [currentUserId]="currentUser.id"></app-list>
+    <app-list-item-form [currentUserId]="currentUser.id"></app-list-item-form>
   </ng-container>
 </div>
 
