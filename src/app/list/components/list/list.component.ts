@@ -18,11 +18,12 @@ export class ListComponent {
   };
 
   readonly userItems$: Observable<ListItem[]> = this.listService.getSortedUserItems();
+  readonly currentSort$: Observable<ColumnSortedData> = this.listService.getCurrentSort();
   readonly tableHeaders = ['id', 'title', 'content'];
 
   constructor(private readonly listService: ListService) { }
 
   onColumnSorted(columnSortedData: ColumnSortedData): void {
-    this.listService.sortUserItems(columnSortedData.direction, columnSortedData.columnName);
+    this.listService.setUserItemsSort(columnSortedData.direction, columnSortedData.columnName);
   }
 }

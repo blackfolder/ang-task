@@ -8,11 +8,16 @@ export const selectListState = createFeatureSelector<fromList.State>(
 
 export const selectUserItems = createSelector(
   selectListState,
-  state => state.userItems,
+  state => Object.values(state.userItems),
 );
 
 export const selectSortedUserItems = createSelector(
   selectListState,
   // lodash used for simplicity
-  state => orderBy(state.userItems, state.sortField, state.sortDirection),
+  state => orderBy(Object.values(state.userItems), state.sortField, state.sortDirection),
+);
+
+export const selectCurrentSort = createSelector(
+  selectListState,
+  state => ({ columnName: state.sortField, direction: state.sortDirection }),
 );

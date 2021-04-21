@@ -7,13 +7,13 @@ export const defaultSortField = 'id';
 export const defaultSortDirection = 'asc';
 
 export interface State {
-  userItems: ListItem[];
+  userItems: { [key: number]: ListItem };
   sortField: string;
   sortDirection: string;
 }
 
 export const initialState: State = {
-  userItems: [],
+  userItems: {},
   sortField: defaultSortField,
   sortDirection: defaultSortDirection,
 };
@@ -23,7 +23,12 @@ export const listReducer = createReducer(
 
   on(UsersActions.loadUserItemsSuccess, (state, { userItems }) => ({
     ...state,
-    userItems,
+    userItems: userItems.reduce((previousValue, currentValue) => {
+      return {
+        ...previousValue,
+        [currentValue.id]: currentValue,
+      };
+    }, {}),
     sortField: defaultSortField,
     sortDirection: defaultSortDirection,
   })),

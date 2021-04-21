@@ -1,8 +1,8 @@
 <h3>User items:</h3>
 
-<table class="table table-bordered" sort (columnSorted)="onColumnSorted($event)">
+<table class="table table-bordered" sort [sort]="currentSort$ | async" (columnSorted)="onColumnSorted($event)">
   <thead class="thead-light">
-    <th [sort-header]="header" sort-direction="asc" *ngFor="let header of tableHeaders">
+    <th [sort-header]="header" *ngFor="let header of tableHeaders">
       {{header}}
     </th>
   </thead>

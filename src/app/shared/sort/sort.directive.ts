@@ -1,6 +1,6 @@
-import { Directive, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Directive, OnInit, EventEmitter, Output, OnDestroy, Input } from '@angular/core';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { ColumnSortedData } from './model/column-sorted-data.model';
 import { SortService } from './sort.service';
 
@@ -8,6 +8,11 @@ import { SortService } from './sort.service';
   selector: '[sort]'
 })
 export class SortDirective implements OnInit, OnDestroy {
+  @Input() set sort(sort: ColumnSortedData) {
+    if (sort) {
+      this.sortService.columnSorted(sort);
+    }
+  };
   @Output() columnSorted = new EventEmitter();
 
   private readonly unsubscribe$ = new Subject<boolean>();
@@ -16,7 +21,10 @@ export class SortDirective implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sortService.columnSorted$
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(
+        filter((columnSorted: ColumnSortedData) => columnSorted.emitEvent),
+        takeUntil(this.unsubscribe$),
+      )
       .subscribe((columnSorted: ColumnSortedData) => {
         this.columnSorted.emit(columnSorted);
       });

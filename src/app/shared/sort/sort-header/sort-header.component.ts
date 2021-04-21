@@ -18,6 +18,7 @@ export class SortHeaderComponent implements OnInit, OnDestroy {
     this.sortService.columnSorted({
       columnName: this.columnName,
       direction: this.sortDirection,
+      emitEvent: true,
     });
   }
 
@@ -29,9 +30,9 @@ export class SortHeaderComponent implements OnInit, OnDestroy {
     this.sortService.columnSorted$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(columnSorted => {
-        if (this.columnName != columnSorted.columnName) {
-          this.sortDirection = null;
-        }
+        this.sortDirection = this.columnName === columnSorted.columnName
+          ? columnSorted.direction
+          : null;
       });
   }
 
