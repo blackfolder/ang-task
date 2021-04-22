@@ -2,30 +2,30 @@
   "1": [
     {
       "id": 2,
-      "title": "User A item 2",
-      "content": "User A item 2 content"
+      "title": "Koszulka wyjazdowa",
+      "content": "Rozmiar M, kolor czarny"
     },
     {
       "id": 1,
-      "title": "User A item 1",
-      "content": "User A item 1 content"
+      "title": "Spodenki treningowe",
+      "content": "Rozmiar M, kolor granatowy, wyprane w Perwolu"
     },
     {
       "id": 3,
-      "title": "User A item 3",
-      "content": "User A item 3 content"
+      "title": "Korki",
+      "content": "Rozmiar 43, kolor biały"
     }
   ],
   "2": [
     {
       "id": 4,
-      "title": "User B item 1",
-      "content": "User B item 1 content"
+      "title": "Koszulka domowa",
+      "content": "Rozmiar L, kolor biało-czarny"
     },
     {
       "id": 5,
-      "title": "User B item 2",
-      "content": "User B item 2 content"
+      "title": "Skarpetki wyjazdowe",
+      "content": "Rozmiar 43, kolor granatowy"
     }
   ]
 }
