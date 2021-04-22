@@ -1,9 +1,8 @@
-<h3>User items:</h3>
-
 <table class="table table-bordered" sort [sort]="currentSort$ | async" (columnSorted)="onColumnSorted($event)">
   <thead class="thead-light">
-    <th [sort-header]="header" *ngFor="let header of tableHeaders">
-      {{header}}
+    <th [sort-header]="header.name" *ngFor="let header of tableHeaders" class="clickable-item"
+      [ngStyle]="{'width': header.sizeInPercent}">
+      {{header.name}}
     </th>
   </thead>
 
@@ -11,7 +10,7 @@
     <ng-container *ngIf="userItems$ | async as items">
       <tr *ngFor="let item of items">
         <td *ngFor="let column of tableHeaders">
-          {{item[column]}}
+          {{item[column.name]}}
         </td>
       </tr>
     </ng-container>

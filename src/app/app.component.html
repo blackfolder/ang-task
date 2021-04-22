@@ -1,9 +1,21 @@
 <div class="container min-vw-100">
-  <app-user-switch></app-user-switch>
+  <div class="row header-buffer ">
+    <div class="col">
+      <app-user-switch></app-user-switch>
+    </div>
+  </div>
+
   <ng-container *ngIf="userService.getCurrentUser() | async as currentUser; else noUserLoggedIn">
-    <h2>Logged in as {{currentUser.name}}</h2>
-    <app-list [currentUserId]="currentUser.id"></app-list>
-    <app-list-item-form [currentUserId]="currentUser.id"></app-list-item-form>
+    <div class="row">
+      <div class="col-7">
+        <h3>All <span class="username">{{currentUser.name}}</span>'s items:</h3>
+        <app-list [currentUserId]="currentUser.id"></app-list>
+      </div>
+      <div class="col-5">
+        <h3>Add new <span class="username">{{currentUser.name}}</span>'s item:</h3>
+        <app-list-item-form [currentUserId]="currentUser.id"></app-list-item-form>
+      </div>
+    </div>
   </ng-container>
 </div>
 

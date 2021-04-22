@@ -5,6 +5,11 @@ import { SortService } from '../../../shared/sort/sort.service';
 import { ListItem } from '../../models/list-item.model';
 import { ListService } from '../../services/list.service';
 
+interface TableHeder {
+  name: string;
+  sizeInPercent: string;
+}
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -19,7 +24,11 @@ export class ListComponent {
 
   readonly userItems$: Observable<ListItem[]> = this.listService.getSortedUserItems();
   readonly currentSort$: Observable<ColumnSortedData> = this.listService.getCurrentSort();
-  readonly tableHeaders = ['id', 'title', 'content'];
+  readonly tableHeaders: TableHeder[] = [
+    { name: 'id', sizeInPercent: '10%' },
+    { name: 'title', sizeInPercent: '45%' },
+    { name: 'content', sizeInPercent: '45%' },
+  ];
 
   constructor(private readonly listService: ListService) { }
 
