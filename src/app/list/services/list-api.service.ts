@@ -48,7 +48,7 @@ export class ListApiService {
 
   private getDataFromLocalStorage(userId: number): ListItem[] | null {
     const cachedUserItems = localStorage.getItem(String(userId));
-    let result: ListItem[];
+    let result: ListItem[] = null;
     if (cachedUserItems) {
       try {
         result = JSON.parse(cachedUserItems);
@@ -57,7 +57,7 @@ export class ListApiService {
       }
     }
 
-    return null;
+    return result;
   }
 
   private getNewItemId(savedItems: ListItem[]): number {

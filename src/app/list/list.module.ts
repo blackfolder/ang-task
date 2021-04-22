@@ -6,7 +6,7 @@ import { ListComponent } from './components/list/list.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ListEffects } from './store/list.effects';
 import { SharedModule } from '../shared/shared.module';
-import { ListItemFormComponent } from './list-item-form/list-item-form.component';
+import { ListItemFormComponent } from './components/list-item-form/list-item-form.component';
 
 @NgModule({
   declarations: [
