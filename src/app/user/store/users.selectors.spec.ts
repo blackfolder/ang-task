@@ -1,3 +1,4 @@
+import { User } from '../models/user.model';
 import * as fromUsers from './users.reducer';
 import { selectUserstate } from './users.selectors';
 
@@ -7,6 +8,6 @@ describe('Users Selectors', () => {
       [fromUsers.usersFeatureKey]: {}
     });
 
-    expect(result).toEqual({});
+    expect(result).toEqual(<{ users: { [key: number]: User } }>{});
   });
 });

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UserService } from '../../services/user.service';
 
 import { UserSwitchComponent } from './user-switch.component';
 
@@ -8,9 +9,15 @@ describe('UserSwitchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserSwitchComponent ]
+      providers: [
+        {
+          provide: UserService,
+          useValue: jasmine.createSpyObj<UserService>('UserService', ['loadUsers', 'getUsers', 'getCurrentUser']),
+        },
+      ],
+      declarations: [UserSwitchComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

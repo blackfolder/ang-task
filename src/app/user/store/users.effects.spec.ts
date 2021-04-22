@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
+import { UserApiService } from '../services/user-api.service';
 
 import { UsersEffects } from './users.effects';
 
@@ -12,7 +13,11 @@ describe('UsersEffects', () => {
     TestBed.configureTestingModule({
       providers: [
         UsersEffects,
-        provideMockActions(() => actions$)
+        {
+          provide: UserApiService,
+          useValue: jasmine.createSpyObj<UserApiService>('UserApiService', ['getUsers']),
+        },
+        provideMockActions(() => actions$),
       ]
     });
 
