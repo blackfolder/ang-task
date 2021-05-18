@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ListItemService } from '../../services/list-item.service';
 
 @Component({
@@ -11,8 +11,8 @@ export class ListItemFormComponent {
   @Input() currentUserId: number;
 
   listItemForm = this.fb.group({
-    title: [''],
-    content: [''],
+    title: ['', Validators.required], 
+    content: ['', Validators.required],
   });
 
   constructor(
@@ -22,6 +22,6 @@ export class ListItemFormComponent {
 
   onSubmit(): void {
     this.listItemService.addItem(this.currentUserId, this.listItemForm.getRawValue());
-    this.listItemForm.patchValue({ title: null, content: null });
+    this.listItemForm.reset();
   }
 }

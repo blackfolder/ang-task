@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <ng-container *ngIf="userService.getCurrentUser() | async as currentUser; else noUserLoggedIn">
+  <ng-container *ngIf="currentUser$ | async as currentUser; else noUserLoggedIn">
     <div class="row">
       <div class="col-7">
         <h3>All <span class="username">{{currentUser.name}}</span>'s items:</h3>
